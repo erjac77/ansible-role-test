@@ -13,3 +13,8 @@
     enabled: true
     state: started
   loop: "{{ services_state.ansible_facts.services|dict2items }}"
+
+- name: Find services
+  find:
+    paths: /etc/systemd/system
+    patterns: '*.service'
