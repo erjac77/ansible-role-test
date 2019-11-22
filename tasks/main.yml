@@ -12,4 +12,4 @@
     name: "{{ item.name }}"
     enabled: true
     state: started
-  with_items: "{{ services_state.ansible_facts.services }}"
+  loop: "{{ services_state.ansible_facts.services|dict2items }}"
