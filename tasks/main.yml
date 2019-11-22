@@ -1,4 +1,9 @@
 ---
+- name: Install apache2
+  package:
+    name: apache2
+    state: present
+
 - name: Collect facts about system services
   service_facts:
   register: services_state
