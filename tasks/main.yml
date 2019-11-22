@@ -9,7 +9,7 @@
 
 - name: Start services
   service:
-    name: "{{ item.name }}"
+    name: "{{ item.key }}"
     enabled: true
     state: started
   loop: "{{ services_state.ansible_facts.services|dict2items }}"
