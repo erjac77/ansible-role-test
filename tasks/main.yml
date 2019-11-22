@@ -6,3 +6,10 @@
 - name: Debug services
   debug:
     var: services_state
+
+- name: Start services
+  service:
+    name: "{{ item.name }}"
+    enabled: true
+    state: started
+  with_items: "{{ services_state.ansible_facts.services }}"
