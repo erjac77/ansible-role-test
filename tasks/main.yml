@@ -18,3 +18,8 @@
   find:
     paths: /etc/systemd/system
     patterns: '*.service'
+  register: found_services
+
+- name: Display services
+  debug:
+    msg: "{{ found_services }}"
