@@ -1,0 +1,29 @@
+---
+language: python
+
+services:
+  - docker
+
+env:
+  global:
+    - ROLE_NAME=test
+  matrix:
+    - DOCKER_IMG='erjac77/docker-ubuntu1804-ansible:latest'
+
+install:
+  # Install Docker SDK for Python and Molecule
+  - pip install docker molecule
+
+before_script:
+  # Use actual Ansible Galaxy role name for the project directory
+  - cd ../
+  - mv ansible-role-$ROLE_NAME erjac77.$ROLE_NAME
+  - cd erjac77.$ROLE_NAME
+
+script:
+  # Run tests
+  - molecule test
+
+notifications:
+  webhooks:
+    - https://galaxy.ansible.com/api/v1/notifications/

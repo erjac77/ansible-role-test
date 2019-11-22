@@ -1,0 +1,8 @@
+---
+- name: Collect facts about system services
+  service_facts:
+  register: services_state
+
+- name: Debug services
+  debug:
+    var: services_state
